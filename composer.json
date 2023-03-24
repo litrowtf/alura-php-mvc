@@ -1,0 +1,14 @@
+{
+  "name": "vendor_name/aluraplay",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "leand",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+  }
+}
