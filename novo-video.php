@@ -11,9 +11,28 @@ $pdo = new PDO("sqlite:$dbPath");
 //echo "{$_POST['url']} --- {$_POST['titulo']}";
 //exit();
 
+//Testa se a url passada é válida. Se não for, redireciona para mensagem de erro e encerra a execução do script
+$url = filter_input(INPUT_POST, 'url',FILTER_VALIDATE_URL);
+if ($url===false){
+    header('Location: /index.php?sucess=0');
+    exit();
+}
+
+$titulo = filter_input(INPUT_POST,'titulo');
+if ($titulo===false){
+    header('Location: /index.php?sucess=0');
+    exit();
+}
+
 $slq = 'INSERT INTO videos (url, title) VALUES (?,?);';
 $statmet = $pdo->prepare($slq);
 $statmet->bindValue(1,$_POST['url']);
 $statmet->bindValue(2,$_POST['titulo']);
 
-var_dump($statmet->execute());
+if ($statmet->execute()===false){
+    //Redirecionamento de página
+    header('Location: /index.php?sucess=0');
+} else{
+    //Redirecionamento de página
+    header('Location: /index.php?sucess=1');
+}

@@ -7,19 +7,28 @@ Editar o arquivo e descomentar a extenção **"extension=pdo_sqlite"**.
 Ver o arquivo **"criar-banco.php"** o comando SQL para criar a tabela.
 
 ## Inserindo um vídeo
-Em  **enviar-video.html** inserir no formulário *action="/novo-video.php"* para chamar a instrução PHP que adicionará o vídeo.
+Em **enviar-video.html** inserir no formulário *action="/novo-video.php"* para chamar a instrução PHP que adicionará o vídeo.
 Esta action será realizada usando o método post.  
 Ao clicar no botão, o arquivo **novo-video.php** será chamado.
 O arquivo **novo-video.php** faz o insert das infomações passadas na tabela.
 
+## Realizando a busca
+Padrão Post/Redirect/Get: redirecionando o usuário através do cabeçalho http após executar uma 
+ação com requisição POST. 
+o redirecionamento é feito através do código:
+```header('Location: /index.php');```
+Obs: atentar para não enviar uma resposta antes do header como, por exemplo, a execução do var_dump, que prepara um
+cabeçado e envia como resposta.
+No index.php foi inserido código php dentro do htmal para gerar as informações dos vídeos inseridos.
 
-
-
-
-
+## Realizando exclusões
+Implementada exclusão do vídeo em **remover-video.php**.  
+Foi utilizada a função "filter_input" para validar o valor recuperado de $_POST, que é representado pela constante
+INPUT_POST.  
+Documentação para [filter_input](https://www.php.net/filter_input).
+Ver também [filter_var](https://www.php.net/filter_var) que tem comportamento similar, porém para variáveis.
 
 ## Para saber mais
-
 ### Variáveis superglobais
 
 * $_FILES que contém um array dos arquivos enviados via upload em um formulário utilizando o verbo/método POST;
