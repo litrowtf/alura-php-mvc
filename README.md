@@ -28,6 +28,29 @@ INPUT_POST.
 Documentação para [filter_input](https://www.php.net/filter_input).
 Ver também [filter_var](https://www.php.net/filter_var) que tem comportamento similar, porém para variáveis.
 
+## Editando o vídeo
+Implementada edição dos registros de vídeo em **editar-video.php**.
+
+**Arquivo formulario.php:**  
+É verificado se a requisição veio com id do vídeo, neste caso, é chamada a instrução para editar o registro,
+caso contrário é chamada a instrução para criar um registro.  
+
+**Arquivo editar-video.php:**  
+Implementada a lógica do update das informações do vídeo. Os valores são capturados com as variáveis 
+Superglobais e passadas no parâmetro da query através da função **bindValue().**
+A query é executada (**$statement->execute()**). 
+
+```
+action="<?= $id !== false ? '/editar-video.php?id=' . $id : '/novo-video.php'; ?>"
+```
+
+
+Foi utilizada a função "filter_input" para validar o valor recuperado de $_POST, que é representado pela constante
+INPUT_POST.  
+Documentação para [filter_input](https://www.php.net/filter_input).
+Ver também [filter_var](https://www.php.net/filter_var) que tem comportamento similar, porém para variáveis.
+
+
 ## Para saber mais
 ### Variáveis superglobais
 

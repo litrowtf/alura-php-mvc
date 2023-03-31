@@ -8,9 +8,6 @@ $pdo = new PDO("sqlite:$dbPath");
  *requisição. Neste exemplo, serão capturadas as informações passadas nos campos do formulário de nome "url" e "titulo".
  */
 
-//echo "{$_POST['url']} --- {$_POST['titulo']}";
-//exit();
-
 //Testa se a url passada é válida. Se não for, redireciona para mensagem de erro e encerra a execução do script
 $url = filter_input(INPUT_POST, 'url',FILTER_VALIDATE_URL);
 if ($url===false){
