@@ -99,3 +99,4 @@ Arquivo centralizador: **index.php**
 
 ### Vantagens
 * O autoloader pode ser colocado apenas no index.php
+* URLs mais amigáveis, pois utiliza o endereço (ex: /novo-video) ao invés do arquivo (ex: novo-video.php)

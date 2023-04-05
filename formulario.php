@@ -1,4 +1,6 @@
 <?php
+//echo $_SERVER['PATH_INFO'] . PHP_EOL . $_SERVER['REQUEST_METHOD'];
+//exit();
 $dbPath = __DIR__ . '/banco.sqlite';
 $pdo = new PDO("sqlite:$dbPath");
 $id = filter_input(INPUT_GET,'id',FILTER_VALIDATE_INT);
@@ -38,7 +40,7 @@ if ($id!==false){
             <a class="logo" href="../index.php"></a>
 
             <div class="cabecalho__icones">
-                <a href="./enviar-video.html" class="cabecalho__videos"></a>
+                <a href="/novo-video" class="cabecalho__videos"></a>
                 <a href="../pages/login.html" class="cabecalho__sair">Sair</a>
             </div>
         </nav>
@@ -48,7 +50,6 @@ if ($id!==false){
     <main class="container">
 
         <form class="container__formulario"
-              action="<?= $id !== false ? '/editar-video.php?id=' . $id : '/novo-video.php'; ?>"
               method="post">
             <h2 class="formulario__titulo">Envie um vídeo!</h2>
                 <div class="formulario__campo">

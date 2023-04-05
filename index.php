@@ -5,7 +5,7 @@
 declare(strict_types=1);
 
 if(!array_key_exists('PATH_INFO',$_SERVER)
-    or $_SERVER['PATH_INFO'] === '/'){
+    || $_SERVER['PATH_INFO'] === '/'){
     require_once 'listagem-videos.php';
 } elseif ($_SERVER['PATH_INFO'] === '/novo-video'){
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -19,4 +19,6 @@ if(!array_key_exists('PATH_INFO',$_SERVER)
     } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
         require_once 'editar-video.php';
     }
+} elseif ($_SERVER['PATH_INFO'] === '/remover-video') {
+    require_once 'remover-video.php';
 }
