@@ -11,13 +11,13 @@ $pdo = new PDO("sqlite:$dbPath");
 //Testa se a url passada é válida. Se não for, redireciona para mensagem de erro e encerra a execução do script
 $url = filter_input(INPUT_POST, 'url',FILTER_VALIDATE_URL);
 if ($url===false){
-    header('Location: /index.php?sucess=0');
+    header('Location: /?sucess=0');
     exit();
 }
 
 $titulo = filter_input(INPUT_POST,'titulo');
 if ($titulo===false){
-    header('Location: /index.php?sucess=0');
+    header('Location: /?sucess=0');
     exit();
 }
 
@@ -28,8 +28,8 @@ $statmet->bindValue(2,$_POST['titulo']);
 
 if ($statmet->execute()===false){
     //Redirecionamento de página
-    header('Location: /index.php?sucess=0');
+    header('Location: /?sucess=0');
 } else{
     //Redirecionamento de página
-    header('Location: /index.php?sucess=1');
+    header('Location: /?sucess=1');
 }
