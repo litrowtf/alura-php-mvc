@@ -100,3 +100,11 @@ Arquivo centralizador: **index.php**
 ### Vantagens
 * O autoloader pode ser colocado apenas no index.php
 * URLs mais amigáveis, pois utiliza o endereço (ex: /novo-video) ao invés do arquivo (ex: novo-video.php)
+
+### Limpando o Código
+Criado os arquivos "inicio-html.php" e "fim-html.php". Nestes arquivos, foram inseridos o cabeçado e rodapé 
+das páginas para evitar repetição de código e facilitar a manutenção  
+
+### Pasta "public"
+
+Pasta que armazenará todo conteúdo acessível do servidor web
