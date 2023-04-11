@@ -108,3 +108,9 @@ das páginas para evitar repetição de código e facilitar a manutenção
 ### Pasta "public"
 
 Pasta que armazenará todo conteúdo acessível do servidor web
+
+### Nessa aula, nós:
+* Conhecemos o padrão front controller, que nos permite ter um ponto único de entrada na aplicação;
+* Definimos a lógica em nosso front controller para incluir os arquivos corretos dependendo da rota;
+* Falamos sobre segurança e por isso movemos os arquivos públicos para uma nova pasta, chamada public;
+* Corrigimos alguns pequenos erros que haviam sido deixados na aplicação, como a verificação do ID ao editar um vídeo.

@@ -14,7 +14,7 @@ $videosList=$pdo->query('SELECT * FROM videos;')->fetchAll(PDO::FETCH_ASSOC);
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
                     <div class="descricao-video">
-                        <img src="./img/logo.png" alt="<?= $video['title'] ?>">
+                        <img src="/img/logo.png" alt="<?= $video['title'] ?>">
                         <h3><?= $video['title']?></h3>
                         <div class="acoes-video">
                             <a href="/editar-video?id=<?=$video['id']; ?>">Editar</a>
