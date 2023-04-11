@@ -9,6 +9,11 @@
       "email": "email@example.com"
     }
   ],
+  "autoload": {
+    "psr-4": {
+      "Alura\\Mvc\\": "src/"
+    }
+  },
   "require": {
     "ext-pdo": "*"
   }
