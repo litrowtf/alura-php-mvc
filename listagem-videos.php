@@ -1,14 +1,12 @@
 <?php
 $dbPath = __DIR__ . '/banco.sqlite';
 $pdo = new PDO("sqlite:$dbPath");
-$repository = new \Alura\Mvc\Repository\VideoRepository($pdo);
-$videosList = $repository->all();
-?>
-<?php require_once 'inicio-html.php';?>
-
+$videoRepository = new \Alura\Mvc\Repository\VideoRepository($pdo);
+$videosList = $videoRepository->all();
+?><?php require_once 'inicio-html.php';?>
     <ul class="videos__container" alt="videos alura">
         <?php foreach ($videosList as $video):?>
-            <?php if(str_starts_with($video['url'], 'http')): ?>
+            <?php if(str_starts_with($video->url, 'http')): ?>
                 <li class="videos__item">
                     <iframe width="100%" height="72%" src="<?= $video->url ?>"
                         title="YouTube video player" frameborder="0"

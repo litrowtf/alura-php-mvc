@@ -114,3 +114,30 @@ Pasta que armazenará todo conteúdo acessível do servidor web
 * Definimos a lógica em nosso front controller para incluir os arquivos corretos dependendo da rota;
 * Falamos sobre segurança e por isso movemos os arquivos públicos para uma nova pasta, chamada public;
 * Corrigimos alguns pequenos erros que haviam sido deixados na aplicação, como a verificação do ID ao editar um vídeo.
+
+## 4. Orientação a objetos
+Realizado refatoramento do código para organizar o projeto e utiizar OO.
+
+### Criado pasta src
+Nesta pasta, serão colocados todos códigos fontes da aplicação
+
+### Configurado autoload com composer
+Adicionado autoload psr-4 no composer.json.  
+Executar ```composer dumpautoload``` no terminal para gerar o autoload.  
+Dessa aforma, o autoload deverá ser chamado apenas no index.php.  
+```
+require_once __DIR__ . '/../vendor/autoload.php';
+```
+
+### Criando a classe "Video"
+Por se tratar de uma entidade, a classe será criada no diretório src/Entity.  
+Nessa classe, serão realizadas as verificações dos parâmetros
+
+### Criando o repositório "VideoRepository"
+No repositório, será implementado a manipulação do banco. Os arquivos serão organizados dentro de src/Repository.  
+Como o acesso ao banco será realizado pelos repositórios, é essencial que o construtor receba uma 
+instância de PDO, dessa forma, possíveis alterações de conexão com o banco serão realizadas em apenas um local.  
+Serão adicionados aqui os métodos para realizar o CRUD.  
+Os métodos criados foram implementados para retornar um booleano indicando se a operação foi bem sucedida.
+> Foi utilizada a função **array_map** (na consulta dos vídeos - método all()) para transformar o array associativo 
+> (retorno do fetchAll (FETCH_ASSOC)) para um array de objetos "Video".

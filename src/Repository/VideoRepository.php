@@ -69,8 +69,12 @@ class VideoRepository
             ->query('SELECT * FROM videos;')
             ->fetchAll(PDO::FETCH_ASSOC);
 //        var_dump($videoList);
+
         return array_map(function (array $videoData){
-            $video = new Video($videoData['url'],$videoData['title']);
+            $video = new Video(
+                strval($videoData['url']),
+                strval($videoData['title'])
+            );
             $video->setId($videoData['id']);
             return $video;
         },
