@@ -16,7 +16,7 @@ if ($url===false){
     header('Location: /?sucess=0');
     exit();
 }
-
+//Testa se o título passado é válido
 $titulo = filter_input(INPUT_POST,'titulo');
 if ($titulo===false){
     header('Location: /?sucess=0');

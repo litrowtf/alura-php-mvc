@@ -141,3 +141,17 @@ Serão adicionados aqui os métodos para realizar o CRUD.
 Os métodos criados foram implementados para retornar um booleano indicando se a operação foi bem sucedida.
 > Foi utilizada a função **array_map** (na consulta dos vídeos - método all()) para transformar o array associativo 
 > (retorno do fetchAll (FETCH_ASSOC)) para um array de objetos "Video".
+
+### Controladores de requisição 
+>**Função:** criar as dependências necessárias, receber os dados da requisição e montar a resposta.
+
+Foram criados os seguintes controladores:
+VideoCreateController.php
+VideoEditController.php
+VideoListController.php
+VideoRemoveController.php
+
+Agora, as requisições feitas ao index.php são passadas para os controladores. 
+Através do método **processaRequisicao()** as requisições são redirecionadas.  
+
+### Assinando um contrado
