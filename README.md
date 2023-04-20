@@ -155,3 +155,13 @@ Agora, as requisições feitas ao index.php são passadas para os controladores.
 Através do método **processaRequisicao()** as requisições são redirecionadas.  
 
 ### Assinando um contrado
+Criação da interface "Controller" para implementá-la nos controladores garantindo que todos os controladores 
+implementem uma interface em comum
+Foi realizado também o ajuste dos controladores e criado o redirecionamento de erro para Error404Controller.php
+
+### Nessa aula, nós:
+Praticamos orientação a objetos para extrair todo o código “solto” em nossa aplicação, organizando melhor a arquitetura;
+Relembramos padrões de projeto como Repository, Entity;
+Colocamos em prática detalhes da nova sintaxe do PHP em sua versão 8.1 como readonly e promoção de propriedades a partir do construtor;
+Fizemos com que nosso front controller chamasse nossos controllers.
+
