@@ -166,4 +166,16 @@ Colocamos em prática detalhes da nova sintaxe do PHP em sua versão 8.1 como re
 Fizemos com que nosso front controller chamasse nossos controllers.
 
 ## 5. Conhecendo o MVC
-Criar arquivos de visualização na pasta "views"
+No projeto, foram criados os arquivos de visualização na pasta "views".  
+**Sobre o padrão MVC:**  
+Modelo ou dommínio (Entity): terá  regras de negócio, acesso à persistência, detalhe de infraestrutura, etc.  
+Visualização (Views): terá os códigos html para visualização da aplicação
+Controladores (Controllers): pega o modelo e exibe na view, ou seja, junta as duas camadas. Recebe a requisição,
+processa e utiliza a view necessária para exibir para o cliente.
+
+### Isolando o HTML
+Criado a pasta "views" para organizar os arquivos de visualização.  
+
+### Configurando rotas
+Criação da pasta "config" para organiar as configurações (de dependência, de arquivos com parâmetros ou de **rotas**)
+
