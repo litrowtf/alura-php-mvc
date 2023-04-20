@@ -165,3 +165,5 @@ Relembramos padrões de projeto como Repository, Entity;
 Colocamos em prática detalhes da nova sintaxe do PHP em sua versão 8.1 como readonly e promoção de propriedades a partir do construtor;
 Fizemos com que nosso front controller chamasse nossos controllers.
 
+## 5. Conhecendo o MVC
+Criar arquivos de visualização na pasta "views"
