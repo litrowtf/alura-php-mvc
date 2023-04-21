@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/estilos.css">
-    <link rel="stylesheet" href="../css/estilos-form.css">
-    <link rel="stylesheet" href="../css/flexbox.css">
+    <link rel="stylesheet" href="../public/css/reset.css">
+    <link rel="stylesheet" href="../public/css/estilos.css">
+    <link rel="stylesheet" href="../public/css/estilos-form.css">
+    <link rel="stylesheet" href="../public/css/flexbox.css">
     <title>AluraPlay</title>
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
 </head>
@@ -20,7 +20,7 @@
     <header>
 
         <nav class="cabecalho">
-            <a class="logo" href="../index.html"></a>
+            <a class="logo" href="../listagem-videos.php"></a>
 
             <div class="cabecalho__icones">
                 <a href="./enviar-video.html" class="cabecalho__videos"></a>
@@ -33,21 +33,21 @@
     <main class="container">
 
         <form class="container__formulario">
-            <h2 class="formulario__titulo">Envie um vídeo!</h3>
+            <h2 class="formulario__titulo">Efetue login</h2>
                 <div class="formulario__campo">
-                    <label class="campo__etiqueta" for="url">Link embed</label>
-                    <input name="url" class="campo__escrita" required
-                        placeholder="Por exemplo: https://www.youtube.com/embed/FAY1K2aUg5g" id='url' />
+                    <label class="campo__etiqueta" for="usuario">Usuário</label>
+                    <input name="user" class="campo__escrita" required
+                        placeholder="Digite seu usuário" id='usuario' />
                 </div>
 
 
                 <div class="formulario__campo">
-                    <label class="campo__etiqueta" for="titulo">Titulo do vídeo</label>
-                    <input name="titulo" class="campo__escrita" required placeholder="Neste campo, dê o nome do vídeo"
-                        id='titulo' />
+                    <label class="campo__etiqueta" for="senha">Senha</label>
+                    <input type="password" name="senha" class="campo__escrita" required placeholder="Digite sua senha"
+                        id='senha' />
                 </div>
 
-                <input class="formulario__botao" type="submit" value="Enviar" />
+                <input class="formulario__botao" type="submit" value="Entrar" />
         </form>
 
     </main>
