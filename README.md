@@ -1,4 +1,9 @@
 # PHP na Web: conhecendo o padrão MVC
+> Usando o PHP na web  
+Gerar HTML usando PHP  
+Filtragem e validação de dados de formulários  
+Usando a orientação a objetos para organizar um projeto  
+Entenda o padrão Model-View-Controller (MVC)  
 
 ## 1. PHP na WEB
 -- Configuração do projto 
@@ -185,3 +190,25 @@ Isolamos nossos arquivos de visualização (HTML) em uma pasta específica, gara
 Conhecemos sobre o padrão MVC (Model View Controller) que nos ajuda na separação das responsabilidades de nosso código em um sistema Web;  
 Conversamos sobre arquitetura e o motivo pelo qual devemos nos preocupar com a organização dos componentes de nossa aplicação web;  
 A partir da organização usando MVC, melhoramos nosso front controller com uma configuração de rotas mais enxuta e extensível.  
+
+
+# PHP na Web: lidando com segurança e API
+> Autenticação  
+> Autorização usando sessões HTTP   
+> Upload de arquivos  
+> Conhecimento de segurança  
+> criação de APIs  
+
+## 1. Segurança com autenticação
+Será criada a autenticação do usuário. 
+
+### Criando a tabela "users"
+Tabela criada com "pdo->exec" (tabela-usuario.php)
+
+### Armazenando senhas
+Função para fazer hash da senha: ```password_hash($pass, PASSWORD_ARGON2ID)```
+O algorítimo de hash PASSWORD_ARGON2ID é um dos mais seguros da atualidade e é ideal 
+para armazenamento seguro de senhas.
+
+
+ 
