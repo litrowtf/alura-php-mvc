@@ -178,4 +178,10 @@ Criado a pasta "views" para organizar os arquivos de visualização.
 
 ### Configurando rotas
 Criação da pasta "config" para organiar as configurações (de dependência, de arquivos com parâmetros ou de **rotas**)
+Definição de rotas. Mapeamento de um verbo HTTP e uma URL para uma classe Controller.
 
+### Nessa aula, nós:
+Isolamos nossos arquivos de visualização (HTML) em uma pasta específica, garantindo uma maior manutenibilidade;  
+Conhecemos sobre o padrão MVC (Model View Controller) que nos ajuda na separação das responsabilidades de nosso código em um sistema Web;  
+Conversamos sobre arquitetura e o motivo pelo qual devemos nos preocupar com a organização dos componentes de nossa aplicação web;  
+A partir da organização usando MVC, melhoramos nosso front controller com uma configuração de rotas mais enxuta e extensível.  
