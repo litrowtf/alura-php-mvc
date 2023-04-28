@@ -210,5 +210,25 @@ Função para fazer hash da senha: ```password_hash($pass, PASSWORD_ARGON2ID)```
 O algorítimo de hash PASSWORD_ARGON2ID é um dos mais seguros da atualidade e é ideal 
 para armazenamento seguro de senhas.
 
+> Criptografia: pode-se usar as funções da biblioteca nativa "sodium".  
+> ex: sodium_crypto_secretbox_keygen (para gerar chaves aleatórias) ou sodium_crypto_secretbox (para
+> encriptar a mensage).
 
- 
+[Explicação no YouTube](https://www.youtube.com/watch?v=4MCO-FgukcA)
+
+### Validando login
+Exibir formulário de login  
+Criadas Rotas e formulários de login  
+Criado LoginFormController.php para mostrar o formulário de login quando a requisição for **GET|/login**  
+Criado LoginController.php para buscar o usuário no banco e verificar a senha com **password_verify**
+
+
+### Nessa aula, nós:
+* Praticamos nosso conhecimento de banco de dados ao criar uma nova tabela (de usuário) e realizar inserções e consultas 
+nela;  
+* Conhecemos conceitos importantes de criptografia como funções de hash. Através desse tipo de função nós podemos 
+armazenar as senhas de nossos usuário de forma segura;  
+* Aprendemos a validar a autenticação de um usuário, inclusive de forma que não deixamos o sistema exposto à 
+possibilidade de enumeração de usuários;  
+* Conhecemos a diferença entre os termos autenticação e autorização, onde o primeiro identifica alguém e o segundo diz
+quais permissões esse alguém possui.  

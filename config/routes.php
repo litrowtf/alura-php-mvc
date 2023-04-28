@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-use Alura\Mvc\Controller\{VideoCreateController,
+use Alura\Mvc\Controller\{LoginController,
+    LoginFormController,
+    VideoCreateController,
     VideoEditController,
     VideoFormController,
     VideoListController,
@@ -15,4 +17,6 @@ return [
     'GET|/editar-video' => VideoFormController::class,
     'POST|/editar-video' => VideoEditController::class,
     'GET|/remover-video' => VideoRemoveController::class,
+    'GET|/login' => LoginFormController::class,
+    'POST|/login' => LoginController::class,
 ];

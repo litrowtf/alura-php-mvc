@@ -9,13 +9,14 @@ use Alura\Mvc\Repository\VideoRepository;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 $routes = require_once __DIR__ . '/../config/routes.php';
-var_dump($routes);
+//var_dump($routes);
 $dbPath = __DIR__ . '/../banco.sqlite';
 $pdo = new PDO("sqlite:$dbPath");
 $videoRepository = new VideoRepository($pdo);
 $pathInfo = $_SERVER['PATH_INFO'] ?? '/'; //se a pathinfo não existir, ela será a "/"
 $httpMethod = $_SERVER['REQUEST_METHOD'];
 $key = "$httpMethod|$pathInfo";
+echo "Chave: $key";
 if (array_key_exists($key, $routes)) {
     $controllerClass = $routes["$httpMethod|$pathInfo"];
     /** @var Controller $controller */
