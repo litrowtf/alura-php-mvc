@@ -231,4 +231,8 @@ armazenar as senhas de nossos usuário de forma segura;
 * Aprendemos a validar a autenticação de um usuário, inclusive de forma que não deixamos o sistema exposto à 
 possibilidade de enumeração de usuários;  
 * Conhecemos a diferença entre os termos autenticação e autorização, onde o primeiro identifica alguém e o segundo diz
-quais permissões esse alguém possui.  
+quais permissões esse alguém possui.
+
+
+## 1. Autorização com session
+Uilização de sessão através de cookies
