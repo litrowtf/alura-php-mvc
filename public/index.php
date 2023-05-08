@@ -14,7 +14,7 @@ use Alura\Mvc\Controller\{
     Controller};
 use Alura\Mvc\Repository\VideoRepository;
 
-require_once __DIR__ . '/../autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 $routes = require_once __DIR__ . '/../config/routes.php';
 
 $dbPath = __DIR__ . '/../banco.sqlite';
