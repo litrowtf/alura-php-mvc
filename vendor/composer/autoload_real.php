@@ -18,6 +18,7 @@ class ComposerAutoloaderInitc3ec0209157bc3e6310188f094f97b7e
      */
     public static function getLoader()
     {
+        echo 'autoload_real.php função getLoader' . PHP_EOL;
         if (null !== self::$loader) {
             return self::$loader;
         }
@@ -30,7 +31,8 @@ class ComposerAutoloaderInitc3ec0209157bc3e6310188f094f97b7e
         call_user_func(\Composer\Autoload\ComposerStaticInitc3ec0209157bc3e6310188f094f97b7e::getInitializer($loader));
 
         $loader->register(true);
-
+        echo 'VAR_DUMP:' . PHP_EOL;
+        var_dump($loader);
         return $loader;
     }
 }
