@@ -1,5 +1,7 @@
 <?php
 
+//echo phpinfo();
+
 declare(strict_types=1);
 
 use Alura\Mvc\Controller\{
