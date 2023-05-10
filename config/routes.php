@@ -8,7 +8,8 @@ use Alura\Mvc\Controller\{LoginController,
     VideoEditController,
     VideoFormController,
     VideoListController,
-    VideoRemoveController};
+    VideoRemoveController,
+    LogoutController};
 
 return [
     'GET|/' => VideoListController::class,
@@ -19,4 +20,5 @@ return [
     'GET|/remover-video' => VideoRemoveController::class,
     'GET|/login' => LoginFormController::class,
     'POST|/login' => LoginController::class,
+    'GET|/logout' => LogoutController::class,
 ];

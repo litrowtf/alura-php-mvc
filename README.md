@@ -236,3 +236,11 @@ quais permissões esse alguém possui.
 
 ## 1. Autorização com session
 Uilização de sessão através de cookies
+
+### Função de sessão session_start()
+Para ter o controle total da aplicação, a função foi colocada no FrontController (index.php)  
+Obs: geralmente a função é a primeira linha, pois no caso de haver erro na chamada de alguma função,
+é assegurado que a sessão foi iniciada.
+
+### Implementando logout
+Aqui será executado uma ação para remover o cookie com a função session_destroy();
