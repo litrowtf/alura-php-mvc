@@ -243,4 +243,32 @@ Obs: geralmente a função é a primeira linha, pois no caso de haver erro na ch
 é assegurado que a sessão foi iniciada.
 
 ### Implementando logout
-Aqui será executado uma ação para remover o cookie com a função session_destroy();
+Aqui será executado a ação para remover o cookie com a função session_destroy(). A função será 
+chamada no método processaRequisicao() da classe LogoutController.
+> Pode ser utilizado opções mais seguras para o encerramento da sessão:
+```
+$_SESSION['logado'] = false;
+ou
+unset($_SESSION['logado']);
+```
+[Ver documentação do *session_destroy()*](https://www.php.net/manual/pt_BR/function.session-destroy.php)
+
+### Resumo do que foi implementado nesta aula
+
+1. Inicialize uma sessão com a função session_start;
+2. Caso o usuário tenha sido autenticado com sucesso, armazene uma informação indicando isso em sessão (ex.: $_SESSION['logado'] = true;);
+3. Ao tentar acessar alguma URL protegida (qualquer uma diferente de /login), se a informação não existir em sessão, redirecione o usuário para /login;
+4. Ao tentar acessar o formulário de login, se o usuário já estiver autenticado, redirecione-o para a listagem de vídeos;
+5. Crie uma nova rota e controller para que a sessão seja destruída, ou seja, uma rota de logout.
+
+### Nessa aula nós:
+* Conhecemos o conceito de sessões HTTP e como sessões podem nos prover a funcionalidade necessária para implementarmos a autorização em nosso sistema;
+* Aprendemos a inicializar sessões com PHP e conferiu alguns problemas que podem acontecer nesse processo;
+* Entendemos como passar a armazenar um dado de sessão, ao validar a identidade de um usuário, que indica que há alguém autenticado no sistema;
+* Aprendemos também a realizar o logout, ou seja, destruir a sessão ou tornar os dados de autenticação inválidos;
+* Compreendemos que limpar os dados de autenticação é melhor do que destruir a sessão.
+
+## Upload de arquivos
+Aprenderemos a manipular uploads de arquivos (como armazenar?).
+
+Obs: não é uma boa prática armazenar arquivos com o tipo "binário" no banco de dados.

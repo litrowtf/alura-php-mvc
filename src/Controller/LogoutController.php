@@ -10,5 +10,14 @@ class LogoutController implements Controller
     {
        session_destroy();
        header('Location: /login');
+
+       /* Também pode ser utilizado umas das alternativas abaixo
+        * $_SESSION['logado'] = false;
+        * unset($_SESSION['logado']);
+        *
+        * Isso é mais seguro, pois a destruição de sessões pode trazer resultados inesperados em casos de
+        * requisições concorrentes
+        *
+        */
     }
 }
