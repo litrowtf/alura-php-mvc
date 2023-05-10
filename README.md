@@ -234,7 +234,7 @@ possibilidade de enumeração de usuários;
 quais permissões esse alguém possui.
 
 
-## 1. Autorização com session
+## 2. Autorização com session
 Uilização de sessão através de cookies
 
 ### Função de sessão session_start()
