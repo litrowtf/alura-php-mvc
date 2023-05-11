@@ -18,10 +18,11 @@ class VideoRepository
     public function add(Video $video): bool
     {
         try {
-            $slq = 'INSERT INTO videos (url, title) VALUES (?,?);';
+            $slq = 'INSERT INTO videos (url, title, image_path) VALUES (?,?,?);';
             $statment = $this->pdo->prepare($slq);
             $statment->bindValue(1, $video->url);
             $statment->bindValue(2, $video->title);
+            $statment->bindValue(3, $video->getFilePath());
             $result = $statment->execute();
             $id = $this->pdo->lastInsertId();
             $video->setId(intval($id));
@@ -47,12 +48,33 @@ class VideoRepository
 
     public function update(Video $video): bool
     {
+        $updatePath = '';
+        $atualizaFilePath = $video->getFilePath()!==null;
+        if($atualizaFilePath){
+            $updatePath = ', image_path = :image_path ';
+        }
         try {
-            $sql = 'UPDATE videos SET url = :url, title = :title WHERE id = :id;';
+            $sql = "UPDATE videos SET url = :url, title = :title $updatePath WHERE id = :id;";
             $statement = $this->pdo->prepare($sql);
             $statement->bindValue(':url', $video->url);
             $statement->bindValue(':title', $video->title);
             $statement->bindValue(':id', $video->id, PDO::PARAM_INT);
+            if($atualizaFilePath){
+                $statement->bindValue(':image_path', $video->getFilePath());
+            }
+            return $statement->execute();
+        } catch (\PDOException $e) {
+            echo "Erro ao editar vídeo: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    public function removeCapa(int $idVideo): bool
+    {
+        try {
+            $sql = "UPDATE videos SET image_path = null WHERE id = ?;";
+            $statement = $this->pdo->prepare($sql);
+            $statement->bindValue(1, $idVideo);
             return $statement->execute();
         } catch (\PDOException $e) {
             echo "Erro ao editar vídeo: " . $e->getMessage();
@@ -87,6 +109,9 @@ class VideoRepository
     {
         $video = new Video($videoData['url'], $videoData['title']);
         $video->setId($videoData['id']);
+        if($videoData['image_path'] !== null){
+            $video->setFilePath($videoData['image_path']);
+        }
         return $video;
     }
 }

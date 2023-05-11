@@ -271,4 +271,43 @@ unset($_SESSION['logado']);
 ## Upload de arquivos
 Aprenderemos a manipular uploads de arquivos (como armazenar?).
 
-Obs: não é uma boa prática armazenar arquivos com o tipo "binário" no banco de dados.
+> Obs: não é uma boa prática armazenar arquivos com o tipo "binário" no banco de dados, pois esse método exige mais processamento do PHP.
+
+Será criada a coluna de texto "image_path" na tabela "videos" que armazenará o caminho da imagem.
+
+```
+--SQL de criação do campo 
+ALTER TABLE videos ADD COLUMN image_path TEXT;
+```
+
+### Alteração no formulário (vieo-form.php).  
+Adicionado novo campo de imagem.  
+Adocionado parâmetro ```type="file"``` para informar que é um campode arquivo e ```accept="image/*"``` para pegar 
+apenas imagens.  
+Também foi incluído o ```enctype="multipart/form-data"``` para informar que o formulário enviará dados além de texto.   
+
+### Processar upload no VideoCreateController.php
+> Utilizar a imagem salva para ser mostrada como thumb do vídeo.
+
+Criada a propriedade *$filePath* (com get e set) na entidade *Video* (?string -> string ou nulo).  
+
+Criada classe *AtualizaImagem* para mover a imagem recebia no upload para um diretório acessível (public/img/uploads) e
+salvar o caminho do arquivo no banco.  
+Atualizado a função *update()* da classe *VideoRepository* para atualizar o campo "image_path" do banco.  
+Atualizado a função *hydrateVideo()* para carregar o campo "image_path" do banco.  
+
+**Adicionado botão "Remover capa".**  
+Criada função *removeCapa()*.  
+Atualizado *VideoEditController* para chamada da função *removerCapa*.
+Atualizado *VideoEditController* para chamada da função *AtualizaImage::atualiza*.  
+
+Criada nova rota 'GET|/remover-capa' em *routes.php*  
+
+Realizado ajustes no *index.php* para apresentar a imagem enviada e para adicioanr a opção "Remover capa".
+
+### Nessa aula:
+* Discutimos sobre como arquivos normalmente são armazenados e os motivos para não salvarmos arquivos diretamente no 
+* banco de dados;  
+* Aprendemos a enviar arquivos através de formulários HTML, definindo corretamente o enctype;  
+* Vimos como podemos receber envios de arquivos na variável $_FILES do PHP;  
+* Aprendemos a usar a função move_uploaded_file para armazenar um arquivo enviado corretamente na pasta desejada.  

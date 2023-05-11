@@ -2,6 +2,7 @@
 
 namespace Alura\Mvc\Controller;
 
+use Alura\Mvc\Entity\AtualizaImagem;
 use Alura\Mvc\Entity\Video;
 use Alura\Mvc\Repository\VideoRepository;
 use PDO;
@@ -22,6 +23,12 @@ class VideoEditController
             return;
         }
 
+        if($_SERVER['PATH_INFO'] == '/remover-capa'){
+            $this->videoRepository->removeCapa($id);
+            header('Location: /?sucesso=1');
+            return;
+        }
+
         $url = filter_input(INPUT_POST, 'url', FILTER_VALIDATE_URL);
         if ($url === false) {
             header('Location: /?sucesso=0');
@@ -35,6 +42,7 @@ class VideoEditController
 
         $video = new Video($url, $titulo);
         $video->setId($id);
+        AtualizaImagem::atualiza($video);
 
         $success = $this->videoRepository->update($video);
 

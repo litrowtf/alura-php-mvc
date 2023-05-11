@@ -17,6 +17,7 @@ return [
     'POST|/novo-video' => VideoCreateController::class,
     'GET|/editar-video' => VideoFormController::class,
     'POST|/editar-video' => VideoEditController::class,
+    'GET|/remover-capa' => VideoEditController::class,
     'GET|/remover-video' => VideoRemoveController::class,
     'GET|/login' => LoginFormController::class,
     'POST|/login' => LoginController::class,

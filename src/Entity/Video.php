@@ -9,6 +9,7 @@ class Video
     //Pode ler, mas só pode atribuir o valor uma vez
     public readonly int $id;
     public readonly string $url;
+    private ?string $filePath = null; // "?" = A variável pode ser null (caso não seja enviada imagem)
 
     public function __construct(
         string $url,
@@ -29,6 +30,16 @@ class Video
     public function setId(int $id): void
     {
         $this->id = $id;
+    }
+
+    public function setFilePath(?string $filePath): void
+    {
+        $this->filePath = $filePath;
+    }
+
+    public function getFilePath(): ?string
+    {
+        return $this->filePath;
     }
 
 }

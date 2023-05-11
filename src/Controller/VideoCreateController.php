@@ -2,6 +2,7 @@
 
 namespace Alura\Mvc\Controller;
 
+use Alura\Mvc\Entity\AtualizaImagem;
 use Alura\Mvc\Entity\Video;
 use Alura\Mvc\Repository\VideoRepository;
 use PDO;
@@ -28,7 +29,10 @@ class VideoCreateController implements Controller
             return;
         }
 
-        $success = $this->videoRepository->add(new Video($url, $titulo));
+        $video = new Video($url, $titulo);
+        AtualizaImagem::atualiza($video);
+
+        $success = $this->videoRepository->add($video);
         if ($success === false) {
             header('Location: /?sucesso=0');
         } else {
