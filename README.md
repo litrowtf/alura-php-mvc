@@ -268,7 +268,7 @@ unset($_SESSION['logado']);
 * Aprendemos também a realizar o logout, ou seja, destruir a sessão ou tornar os dados de autenticação inválidos;
 * Compreendemos que limpar os dados de autenticação é melhor do que destruir a sessão.
 
-## Upload de arquivos
+## 3. Upload de arquivos
 Aprenderemos a manipular uploads de arquivos (como armazenar?).
 
 > Obs: não é uma boa prática armazenar arquivos com o tipo "binário" no banco de dados, pois esse método exige mais processamento do PHP.
@@ -310,4 +310,28 @@ Realizado ajustes no *index.php* para apresentar a imagem enviada e para adicioa
 * banco de dados;  
 * Aprendemos a enviar arquivos através de formulários HTML, definindo corretamente o enctype;  
 * Vimos como podemos receber envios de arquivos na variável $_FILES do PHP;  
-* Aprendemos a usar a função move_uploaded_file para armazenar um arquivo enviado corretamente na pasta desejada.  
+* Aprendemos a usar a função move_uploaded_file para armazenar um arquivo enviado corretamente na pasta desejada.
+
+## 4. Segurança
+
+### Verificar o algorítimo de hash utilizado na senha
+Caso surja um algorítimo de hash mais seguro é possível verificar se as senhas gravadas no banco já estão criptografadas
+com o hash. Caso não estejam, é possível atualizar.
+```password_needs_rehash($password, PASWORD_ARGON2ID)```
+
+Realizado procedimento para evitar atacks do tipo Timing Attack
+
+### Segurança com sessões
+Evitar sequestro de cookies com o código ```session_regenerate_id()```.  
+Obs: não lida bem com conexões ruins ou de alta concorrência. Para contornar o problema veja a [documentação](https://www.php.net/session_regenerate_id).
+
+### Segurança com uploads
+Ver os comentários da classe AtualizaImagem->atualiza() 
+
+### Nessa aula:
+* Nos aprofundamos em conceitos de segurança;
+* Aprendemos como gerar um hash atualizado das senhas de nossos usuários com a função password_needs_rehash;
+* Entendemos como tornar nossos cookies mais seguros definindo alguns parâmetros específicos;
+* Aprendemos sobre os riscos e medidas de segurança, ao lidar com arquivos usando inclusive a extensão fileinfo.
+
+## 5. API e WebServices

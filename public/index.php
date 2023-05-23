@@ -20,6 +20,8 @@ $httpMethod = $_SERVER['REQUEST_METHOD'];
 
 // É necessário o session_start() para utilizar a variável $_SESSION
 session_start();
+//A cada nova requisição, um novo ID de sessão será gerado
+session_regenerate_id();
 $isLoginRoute = $pathInfo === '/login'; //Evitar erro TOO_MANY_REDIRECTS
 if(!array_key_exists('logado', $_SESSION) && !$isLoginRoute){
     header('Location: /login');// O header deve conter o cabeçalho (Location) e a URL (/login)
