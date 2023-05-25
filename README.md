@@ -338,3 +338,19 @@ Ver os comentários da classe AtualizaImagem->atualiza()
 Criado controlador JsonVideoListController para retornar lista de vídeos cadastrados no formato Json.
 Criado controlador NewJsonVideoController para receber requisições POST sem formulário (simulando
 uma requisição de API).
+
+# PHP na Web: aplicando boas práticas e PSRs
+
+## 1. Apresentação
+O foco deste curso será o ecossistema PHP e as boas práticas
+
+## 2. Chamada do HTML
+Criada classe abstrata [ControllerWithHtml.php](src%2FController%2FControllerWithHtml.php). Nela será padronizada a 
+a chamda da página html através do método renderTemplate.   
+Modificada as classes abaixo para implementar **ControllerWithHtml**:  
+[LoginFormController.php](src%2FController%2FLoginFormController.php)  
+[VideoFormController.php](src%2FController%2FVideoFormController.php)  
+[VideoListController.php](src%2FController%2FVideoListController.php) 
+
+**Obs:** cuidar do escopo das variáveis usadas nos arquivos html chamados nos Controllers. As variáveis são passadas 
+como array e tratadas com a função [**extract**](https://www.php.net/extract).
