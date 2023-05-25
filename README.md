@@ -335,3 +335,6 @@ Ver os comentários da classe AtualizaImagem->atualiza()
 * Aprendemos sobre os riscos e medidas de segurança, ao lidar com arquivos usando inclusive a extensão fileinfo.
 
 ## 5. API e WebServices
+Criado controlador JsonVideoListController para retornar lista de vídeos cadastrados no formato Json.
+Criado controlador NewJsonVideoController para receber requisições POST sem formulário (simulando
+uma requisição de API).
