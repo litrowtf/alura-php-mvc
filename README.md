@@ -354,3 +354,17 @@ Modificada as classes abaixo para implementar **ControllerWithHtml**:
 
 **Obs:** cuidar do escopo das variáveis usadas nos arquivos html chamados nos Controllers. As variáveis são passadas 
 como array e tratadas com a função [**extract**](https://www.php.net/extract).
+
+## Output Buffer
+Buffer de saída -> Para exibir as páginas na tela
+Funções "ob_..."
+ob_start() -> Inicializa o buffer de saída
+ob_get_content -> Recupera o conteúdo
+ob_clean -> Limpa o buffer
+ob_get_cleand -> recupera o buffer e limpa
+
+## Nessa aula, nós:
+* Praticamos nosso conhecimento de herança da orientação a objetos;
+* Limitamos o acesso de nossos templates a somente as variáveis que forem enviadas por parâmetro e para isso nós usamos 
+* a função extract;
+* Conhecemos sobre o controle de saída do PHP, ou em inglês, output buffer.
