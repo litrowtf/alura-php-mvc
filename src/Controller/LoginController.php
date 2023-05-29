@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace Alura\Mvc\Controller;
 
+use Alura\Mvc\Helper\FlashMassageTrait;
+
 class LoginController implements Controller
 {
+    use FlashMassageTrait;
     private \PDO $pdo;
 
     public function __construct()
@@ -47,7 +50,8 @@ class LoginController implements Controller
             $_SESSION['logado'] = true;
             header('Location: /?sucesso=1');
         } else {
-            header('Location: /login?sucesso=0');
+            $this->addErroMassage('Usuário ou senha inválidos');
+            header('Location: /login');
         }
 
 

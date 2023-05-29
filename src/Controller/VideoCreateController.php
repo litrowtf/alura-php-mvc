@@ -4,11 +4,12 @@ namespace Alura\Mvc\Controller;
 
 use Alura\Mvc\Entity\AtualizaImagem;
 use Alura\Mvc\Entity\Video;
+use Alura\Mvc\Helper\FlashMassageTrait;
 use Alura\Mvc\Repository\VideoRepository;
-use PDO;
 
 class VideoCreateController implements Controller
 {
+    use FlashMassageTrait;
     public function __construct(private VideoRepository $videoRepository)
     {
 
@@ -20,12 +21,14 @@ class VideoCreateController implements Controller
 
         $url = filter_input(INPUT_POST, 'url', FILTER_VALIDATE_URL);
         if ($url === false) {
-            header('Location: /?sucesso=0');
+            $this->addErroMassage('URL inválida');
+            header('Location: /novo-video');
             return;
         }
         $titulo = filter_input(INPUT_POST, 'titulo');
         if ($titulo === false) {
-            header('Location: /?sucesso=0');
+            $this->addErroMassage('Título não informado');
+            header('Location: /novo-video');
             return;
         }
 
@@ -34,7 +37,8 @@ class VideoCreateController implements Controller
 
         $success = $this->videoRepository->add($video);
         if ($success === false) {
-            header('Location: /?sucesso=0');
+            $this->addErroMassage('Erro ao cadastrar vídeo');
+            header('Location: /novo-video');
         } else {
             header('Location: /?sucesso=1');
         }

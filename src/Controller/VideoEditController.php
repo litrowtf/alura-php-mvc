@@ -4,11 +4,12 @@ namespace Alura\Mvc\Controller;
 
 use Alura\Mvc\Entity\AtualizaImagem;
 use Alura\Mvc\Entity\Video;
+use Alura\Mvc\Helper\FlashMassageTrait;
 use Alura\Mvc\Repository\VideoRepository;
-use PDO;
 
 class VideoEditController
 {
+    use FlashMassageTrait;
     public function __construct(private VideoRepository $videoRepository)
     {
 
@@ -19,7 +20,8 @@ class VideoEditController
     {
         $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
         if ($id === false || $id === null) {
-            header('Location: /?sucesso=0');
+            $this->addErroMassage('Id não encontrado');
+            header('Location: /editar-video');
             return;
         }
 
@@ -31,12 +33,14 @@ class VideoEditController
 
         $url = filter_input(INPUT_POST, 'url', FILTER_VALIDATE_URL);
         if ($url === false) {
-            header('Location: /?sucesso=0');
+            $this->addErroMassage('URL inválida');
+            header('Location: /editar-video');
             return;
         }
         $titulo = filter_input(INPUT_POST, 'titulo');
         if ($titulo === false) {
-            header('Location: /?sucesso=0');
+            $this->addErroMassage('Título não informado');
+            header('Location: /editar-video');
             return;
         }
 
@@ -47,7 +51,8 @@ class VideoEditController
         $success = $this->videoRepository->update($video);
 
         if ($success === false) {
-            header('Location: /?sucesso=0');
+            $this->addErroMassage('Erro ao atualizar vídeo');
+            header('Location: /editar-video');
         } else {
             header('Location: /?sucesso=1');
         }

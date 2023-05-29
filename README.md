@@ -341,10 +341,11 @@ uma requisição de API).
 
 # PHP na Web: aplicando boas práticas e PSRs
 
-## 1. Apresentação
+## 1. Pensando em herança
+### Apresentação
 O foco deste curso será o ecossistema PHP e as boas práticas
 
-## 2. Chamada do HTML
+### Chamada do HTML
 Criada classe abstrata [ControllerWithHtml.php](src%2FController%2FControllerWithHtml.php). Nela será padronizada a 
 a chamda da página html através do método renderTemplate.   
 Modificada as classes abaixo para implementar **ControllerWithHtml**:  
@@ -355,7 +356,7 @@ Modificada as classes abaixo para implementar **ControllerWithHtml**:
 **Obs:** cuidar do escopo das variáveis usadas nos arquivos html chamados nos Controllers. As variáveis são passadas 
 como array e tratadas com a função [**extract**](https://www.php.net/extract).
 
-## Output Buffer
+### Output Buffer
 Buffer de saída -> Para exibir as páginas na tela
 Funções "ob_..."
 ob_start() -> Inicializa o buffer de saída
@@ -363,8 +364,12 @@ ob_get_content -> Recupera o conteúdo
 ob_clean -> Limpa o buffer
 ob_get_cleand -> recupera o buffer e limpa
 
-## Nessa aula, nós:
+### Nessa aula, nós:
 * Praticamos nosso conhecimento de herança da orientação a objetos;
 * Limitamos o acesso de nossos templates a somente as variáveis que forem enviadas por parâmetro e para isso nós usamos 
 * a função extract;
 * Conhecemos sobre o controle de saída do PHP, ou em inglês, output buffer.
+
+## 2. Traits
+
+### Flash Messages
