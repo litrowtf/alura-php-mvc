@@ -372,4 +372,24 @@ ob_get_cleand -> recupera o buffer e limpa
 
 ## 2. Traits
 
-### Flash Messages
+### Nessa aula:
+* Conhecemos o conceito de flash messages, que são mensagens armazenadas em sessão que duram apenas uma requisição;
+* Aprendemos a utilizar trait no PHP, nos permitindo ter o que é chamado de herança horizontal, onde há reaproveitamento 
+* de código, mas não polimorfismo;
+* Entendemos que é possível usar várias traits na mesma classe e que existe um conceito de resolução de conflitos de 
+* nomes em traits.
+
+## 3. PSRs
+Site para consultar a documentação das PSRs e PERs https://www.php-fig.org/
+
+### Represenando melhor o HTTp
+
+Interface ServerRquestInterface -> Representação da requisição chegando no lado do servidor
+Instalação do componete para prover as interfaces ```composer require psr/http-message```  
+Instação do componente para implementar o Response ```composer require nyholm/psr7```  
+
+> PSR-7: HTTP message interfaces: Utiliza ServerRequestInterface e ResponseInterfece para requiperar os inputs, ao invés
+> de usar as variáveis superglobais.  
+> Ex:  
+> ``` ServerRequestInterface $request```  
+> ```$queryParams = $request->getQueryParams;```

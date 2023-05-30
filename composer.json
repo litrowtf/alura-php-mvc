@@ -16,6 +16,8 @@
   },
   "require": {
     "ext-pdo": "*",
-    "ext-fileinfo": "*"
+    "ext-fileinfo": "*",
+    "psr/http-message": "^2.0",
+    "nyholm/psr7": "^1.8"
   }
 }
