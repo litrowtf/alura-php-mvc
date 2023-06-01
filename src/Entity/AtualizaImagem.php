@@ -4,20 +4,25 @@ declare(strict_types=1);
 
 namespace Alura\Mvc\Entity;
 
-use Alura\Mvc\Repository\VideoRepository;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\UploadedFileFactoryInterface;
+use Psr\Http\Message\UploadedFileInterface;
 
 class  AtualizaImagem
 {
 
-    public static function atualiza(Video &$video): void
+    public static function atualiza(Video &$video, ServerRequestInterface $request): void
     {
         //Verifica se houve erro no upload
-        if ($_FILES['image']['error'] === UPLOAD_ERR_OK) {
+        $files = $request->getUploadedFiles();
+        /** @var UploadedFileInterface $uploadedImage */
+        $uploadedImage = $files['image'];
+        if ($uploadedImage->getError() === UPLOAD_ERR_OK) {
             //Inicia teste de tipo do arquivo
             $finfo = new \finfo(FILEINFO_MIME_TYPE);
-
+            $tmpFile = $uploadedImage->getStream()->getMetadata('uri');
             //Guardo o tipo do arquivo em $mineType
-            $mineType = $finfo->file($_FILES['image']['tmp_name']);
+            $mineType = $finfo->file($tmpFile);
 
             //Verifica se o arquivo é uma imagem
             if (str_starts_with($mineType, 'image/')){
@@ -29,11 +34,8 @@ class  AtualizaImagem
 
                     //Nome de arquivo seguro
                 $safeFileName = $uniqid . $pathinfo;
-                //Caso não ocorra erros, move o rquivo para um local acessível
-                move_uploaded_file(
-                    $_FILES['image']['tmp_name'],
-                    __DIR__ . '/../../public/img/uploads/' . $safeFileName
-                );
+                //Caso não ocorra erros, move o arquivo para um local acessível
+                $uploadedImage->moveTo(__DIR__ . '/../../´public/img/uploads' . $safeFileName);
                 $video->setFilePath($safeFileName); //Definindo o filePath
             }
         }

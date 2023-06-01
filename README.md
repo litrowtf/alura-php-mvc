@@ -393,3 +393,8 @@ Instação do componente para implementar o Response ```composer require nyholm/
 > Ex:  
 > ``` ServerRequestInterface $request```  
 > ```$queryParams = $request->getQueryParams;```
+
+### Criando requisições
+Instalação do **nyholm/psr7-server** para criar as requisições no index.php.  
+Criar requisições com **Psr17Factory** e **ServerRequestCreator**.
+Feito foreach para o header. 

@@ -4,7 +4,9 @@ namespace Alura\Mvc\Controller;
 
 use Alura\Mvc\Helper\HtmlRendererTrait;
 use Alura\Mvc\Repository\VideoRepository;
-use PDO;
+use Nyholm\Psr7\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 class VideoListController implements Controller
 {
@@ -16,14 +18,12 @@ class VideoListController implements Controller
     }
 
     //Lidar com as requisições (GET, POST, etc)
-    public function processaRequisicao(): void
+    public function processaRequisicao(ServerRequestInterface $request): ResponseInterface
     {
         $videosList = $this->videoRepository->all();
 
-        echo $this->renderTemplate(
+        return new Response(200, body: $this->renderTemplate(
             'video-list',
-            ['videosList' => $videosList]
-        );
-
+            ['videosList' => $videosList]));
     }
 }

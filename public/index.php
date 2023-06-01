@@ -38,4 +38,24 @@ if (array_key_exists($key, $routes)) {
     $controller = new Error404Controller();
 }
 
-$controller->processaRequisicao();
+$psr17Factory = new \Nyholm\Psr7\Factory\Psr17Factory();
+
+$creator = new \Nyholm\Psr7Server\ServerRequestCreator(
+    $psr17Factory,
+    $psr17Factory,
+    $psr17Factory,
+    $psr17Factory,
+);
+
+$request = $creator->fromGlobals();
+
+/** @var Controller $controller */
+$response = $controller->processaRequisicao($request);
+http_response_code($response->getStatusCode());
+foreach ($response->getHeaders() as $name => $values){
+    foreach ($values as $value) {
+        header(sprintf('%s: %s', $name, $value), false);
+    }
+}
+
+echo $response->getBody();

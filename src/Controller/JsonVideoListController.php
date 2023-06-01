@@ -4,9 +4,11 @@ namespace Alura\Mvc\Controller;
 
 use Alura\Mvc\Entity\Video;
 use Alura\Mvc\Repository\VideoRepository;
-use PDO;
+use Nyholm\Psr7\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
-class JsonVideoListController
+class JsonVideoListController implements Controller
 {
     public function __construct(private VideoRepository $videoRepository)
     {
@@ -14,7 +16,7 @@ class JsonVideoListController
     }
 
     //Lidar com as requisições (GET, POST, etc)
-    public function processaRequisicao(): void
+    public function processaRequisicao(ServerRequestInterface $request): ResponseInterface
     {
         // A listagem de vídeos captudaras em videoRepository->all() é passada para a função anônima como objeto e essa
         // função retorna as propriedades da entidade Video na forma de array associativo. O retorno é armazenado em
@@ -28,7 +30,9 @@ class JsonVideoListController
         }, $this->videoRepository->all());
 
         //Tranformando a resposta em um Json
-        echo json_encode($videosList);
-
+//        echo json_encode($videosList);
+        return new Response(200, [
+            'Content-Type' => 'application/json'
+            ], json_encode($videosList));
     }
 }

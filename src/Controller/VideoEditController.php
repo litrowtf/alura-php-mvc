@@ -6,55 +6,76 @@ use Alura\Mvc\Entity\AtualizaImagem;
 use Alura\Mvc\Entity\Video;
 use Alura\Mvc\Helper\FlashMassageTrait;
 use Alura\Mvc\Repository\VideoRepository;
+use Nyholm\Psr7\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
-class VideoEditController
+class VideoEditController implements Controller
 {
     use FlashMassageTrait;
+
     public function __construct(private VideoRepository $videoRepository)
     {
 
     }
 
     //Lidar com as requisições (GET, POST, etc)
-    public function processaRequisicao(): void
+    public function processaRequisicao(ServerRequestInterface $request): ResponseInterface
     {
-        $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+        $queryParams = array_merge($request->getQueryParams(), $request->getParsedBody());
+//        var_dump($queryParams);
+//        exit();
+        $id = filter_var($queryParams['id'], FILTER_VALIDATE_INT);
         if ($id === false || $id === null) {
-            $this->addErroMassage('Id não encontrado');
-            header('Location: /editar-video');
-            return;
+            $this->addErrorMassage('Id não encontrado');
+            return new Response(302, [
+                'Location' => '/editar-video'
+            ]);
         }
 
-        if($_SERVER['PATH_INFO'] == '/remover-capa'){
+        if ($_SERVER['PATH_INFO'] == '/remover-capa') {
             $this->videoRepository->removeCapa($id);
-            header('Location: /?sucesso=1');
-            return;
+            return new Response(200, [
+                'Location' => '/'
+            ]);
         }
-
-        $url = filter_input(INPUT_POST, 'url', FILTER_VALIDATE_URL);
+//        var_dump($queryParams);
+//        exit();
+        $url = filter_var($queryParams['url'], FILTER_VALIDATE_URL);
         if ($url === false) {
-            $this->addErroMassage('URL inválida');
-            header('Location: /editar-video');
-            return;
+            $this->addErrorMassage('URL inválida');
+            return new Response(302, [
+                'Location' => '/editar-video'
+            ]);
         }
-        $titulo = filter_input(INPUT_POST, 'titulo');
+//        $titulo = filter_input(INPUT_POST, 'titulo');
+        $titulo = filter_var($queryParams['titulo']);
         if ($titulo === false) {
-            $this->addErroMassage('Título não informado');
-            header('Location: /editar-video');
-            return;
+            $this->addErrorMassage('Título não informado');
+            return new Response(302, [
+                'Location' => '/editar-video'
+            ]);
         }
 
         $video = new Video($url, $titulo);
         $video->setId($id);
-        AtualizaImagem::atualiza($video);
+        AtualizaImagem::atualiza($video, $request);
 
         $success = $this->videoRepository->update($video);
 
         if ($success === false) {
-            $this->addErroMassage('Erro ao atualizar vídeo');
-            header('Location: /editar-video');
-        } else {
-            header('Location: /?sucesso=1');
+//            echo 'Erro VideoEditController';
+            $this->addErrorMassage('Erro ao atualizar vídeo');
+            return new Response(302, [
+                'Location' => '/editar-video'
+            ]);
         }
+
+//      echo 'PASSOU VideoEditController';
+
+        return new Response(302, [
+            'Location' => '/'
+        ]);
+
     }
 }
