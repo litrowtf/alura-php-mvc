@@ -1,9 +1,9 @@
 <?php
+$this->layout('layout');
 /**@var Video[] $videosList*/ //<-- Comando para a IDE reconhecer a $vídeoList como um array de Video
 
 use Alura\Mvc\Entity\Video;
-
-require_once 'inicio-html.php';?>
+;?>
 <ul class="videos__container" alt="videos alura">
     <?php foreach ($videosList as $video):?>
         <?php if(str_starts_with($video->url, 'http')): ?>
@@ -31,4 +31,3 @@ require_once 'inicio-html.php';?>
     <?php endif;?>
     <?php endforeach; ?>
 </ul>
-<?php require_once 'fim-html.php';

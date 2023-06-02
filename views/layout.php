@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,12 +12,9 @@
     <title>AluraPlay</title>
     <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
 </head>
-
 <body>
-
 <!-- Cabecalho -->
 <header>
-
     <nav class="cabecalho">
         <a class="logo" href="/"></a>
         <div class="cabecalho__icones">
@@ -29,9 +25,13 @@
 
 </header>
 <!--Mensagem de erro no login-->
-<?php if(isset($_SESSION['error_message'])): ?>
+<?php if (isset($_SESSION['error_message'])): ?>
     <h2 class="formulario__titulo erro">
-        <?=$_SESSION['error_message'];?>
-        <?php unset($_SESSION['error_message']);?>
+        <?= $_SESSION['error_message']; ?>
+        <?php unset($_SESSION['error_message']); ?>
     </h2>
-<?php endif;?>
+<?php endif; ?>
+
+<?= $this->section('content');?>
+</body>
+</html>

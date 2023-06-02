@@ -434,3 +434,17 @@ boas práticas.
 * Conhecemos a PSR-11, que nos fornece uma interface de container de injeção dependência;
 * Passamos a utilizar um container de injeção dependência em nosso front-controller, permitindo que cada controller nosso possa ter diferentes dependências;
 * Configuramos o pacote PHP-DI, que implementa a PSR-11 e nos permite ter resolução automática da maioria de nossas dependências.
+
+## Templating
+tilizado o plates como template engine.  
+composer require league/plates
+
+> Um layout é basicamente uma view especial, que define uma estrutura padrão para que as demais views a utilizem.
+
+Criação do arquivo layout.php. Este arquivo possui o início e o fim do html. A página será inserida no meio.
+
+### Nessa aula, nós:
+* Conhecemos sobre template engines no mundo PHP, aprendendo inclusive que há engines conhecidas como nativas, que usam a sintaxe que já conhecemos, e as compiladas, que trazem uma sintaxe diferente para nossas views;
+* Configuramos e utilizamos o Plates em nosso projeto, que é um template engine em nativa pro PHP;
+* Fizemos uso do conceito de layouts de uma template engine, tornando a reutilização de código na view mais profissional.
+

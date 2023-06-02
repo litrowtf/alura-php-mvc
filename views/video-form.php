@@ -3,7 +3,7 @@
 
 use Alura\Mvc\Entity\Video;
 
-require_once 'inicio-html.php';?>
+$this->insert('inicio-html');?>
     <main class="container">
         <form class="container__formulario"
               enctype="multipart/form-data"
@@ -43,5 +43,4 @@ require_once 'inicio-html.php';?>
         </form>
 
     </main>
-<?php
-require_once 'fim-html.php';
+<?php $this->insert('fim-html');
