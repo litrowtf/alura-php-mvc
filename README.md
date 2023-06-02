@@ -404,8 +404,33 @@ Explorando a PSR-15.
 Instalação do componente: composer require psr/http-server-handler.  
 Modificar os controllers para implementar RequestHandlerItnerface ao invés de Controller.
 Feito alterações no index.php para usar o RequestHandlerItnerface e o método handle().
+
 ### Nessa aula:
 * Conhecemos o grupo de interoperabilidade entre frameworks, o PHP-FIG, e entendemos sua história e propósito;  
 * Aprendemos sobre os diferentes tipos de PSRs como as de interfaces, de HTTP, autoloading e de estilo de código;  
 * Usamos na prática componentes que implementam as PSRs 7, 17 e 15;  
 * Vimos como deixar nosso código cada vez mais desacoplado de implementações específicas, apesar de utilizar componentes externos.  
+
+## 4. Mais padronização
+
+### Conhecendo a PSR-11
+PSR-11 é uma interface comum para contêineres de injeção de dependências.  
+
+composer require psr/container  
+
+```$diContainer->get``` Resolve as dependencias do construtor da classe
+
+### Instalando o PHP-DI
+
+```composer require php-di/php-di```
+Criado o arquivo de configuração dependencies.php para configurar a criação das classes pelo Dependencie Injection.
+Em dependencies.php, as dependências só serão carregadas sob demanda, portanto, a implementação de funções complexas e 
+pesadas **não** irá afetar o desempenho da aplicação (conceito de *lazy loading*).
+
+O site PHP: [The Right Way](https://phptherightway.com/) (PHP do jeito certo) possui diversas dicas interessantes de 
+boas práticas.
+
+### Nessa aula:
+* Conhecemos a PSR-11, que nos fornece uma interface de container de injeção dependência;
+* Passamos a utilizar um container de injeção dependência em nosso front-controller, permitindo que cada controller nosso possa ter diferentes dependências;
+* Configuramos o pacote PHP-DI, que implementa a PSR-11 e nos permite ter resolução automática da maioria de nossas dependências.
