@@ -398,3 +398,14 @@ Instação do componente para implementar o Response ```composer require nyholm/
 Instalação do **nyholm/psr7-server** para criar as requisições no index.php.  
 Criar requisições com **Psr17Factory** e **ServerRequestCreator**.
 Feito foreach para o header. 
+
+### Padronizando o controller
+Explorando a PSR-15.  
+Instalação do componente: composer require psr/http-server-handler.  
+Modificar os controllers para implementar RequestHandlerItnerface ao invés de Controller.
+Feito alterações no index.php para usar o RequestHandlerItnerface e o método handle().
+### Nessa aula:
+* Conhecemos o grupo de interoperabilidade entre frameworks, o PHP-FIG, e entendemos sua história e propósito;  
+* Aprendemos sobre os diferentes tipos de PSRs como as de interfaces, de HTTP, autoloading e de estilo de código;  
+* Usamos na prática componentes que implementam as PSRs 7, 17 e 15;  
+* Vimos como deixar nosso código cada vez mais desacoplado de implementações específicas, apesar de utilizar componentes externos.  

@@ -3,7 +3,7 @@
         'name' => 'vendor_name/aluraplay',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '9e37c7b74c5e34649427b1405af3901e3661774c',
+        'reference' => 'f6f37cfc90cd68a1b33d9d65ea1f5f9b1bd7c28d',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -76,7 +76,7 @@
         'vendor_name/aluraplay' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '9e37c7b74c5e34649427b1405af3901e3661774c',
+            'reference' => 'f6f37cfc90cd68a1b33d9d65ea1f5f9b1bd7c28d',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -7,6 +7,7 @@ use Alura\Mvc\Repository\VideoRepository;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 
 /** Enviar requisição pelo Postman
@@ -24,7 +25,7 @@ use Psr\Http\Message\ServerRequestInterface;
  * PHPSESSID=ofga6c41blr5crjb9l97pis26c; Path=/;
  */
 
-class NewJsonVideoController implements Controller
+class NewJsonVideoController implements RequestHandlerInterface
 {
     public function __construct(private VideoRepository $videoRepository)
     {
@@ -32,7 +33,7 @@ class NewJsonVideoController implements Controller
     }
 
     //Lidar com as requisições (GET, POST, etc)
-    public function processaRequisicao(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
 //        $request = file_get_contents('php://input');
         $request = $request->getBody()->getContents();

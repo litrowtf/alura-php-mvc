@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Alura\Mvc\Entity;
 
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\UploadedFileFactoryInterface;
 use Psr\Http\Message\UploadedFileInterface;
 
 class  AtualizaImagem

@@ -9,8 +9,9 @@ use Alura\Mvc\Repository\VideoRepository;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
-class VideoRemoveController implements Controller
+class VideoRemoveController implements RequestHandlerInterface
 {
     use FlashMassageTrait;
 
@@ -20,7 +21,7 @@ class VideoRemoveController implements Controller
     }
 
     //Lidar com as requisições (GET, POST, etc)
-    public function processaRequisicao(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $queryParams = $request->getQueryParams();
         $id = filter_var($queryParams['id'], FILTER_VALIDATE_INT);

@@ -5,9 +5,9 @@
 declare(strict_types=1);
 
 use Alura\Mvc\Controller\{
-    Error404Controller,
-    Controller};
+    Error404Controller,};
 use Alura\Mvc\Repository\VideoRepository;
+use Psr\Http\Server\RequestHandlerInterface;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 $routes = require_once __DIR__ . '/../config/routes.php';
@@ -32,7 +32,7 @@ $key = "$httpMethod|$pathInfo";
 
 if (array_key_exists($key, $routes)) {
     $controllerClass = $routes["$httpMethod|$pathInfo"];
-    /** @var Controller $controller */
+    /** @var RequestHandlerInterface $controller */
     $controller = new $controllerClass($videoRepository);
 } else{
     $controller = new Error404Controller();
@@ -49,8 +49,8 @@ $creator = new \Nyholm\Psr7Server\ServerRequestCreator(
 
 $request = $creator->fromGlobals();
 
-/** @var Controller $controller */
-$response = $controller->processaRequisicao($request);
+/** @var RequestHandlerInterface $controller */
+$response = $controller->handle($request);
 http_response_code($response->getStatusCode());
 foreach ($response->getHeaders() as $name => $values){
     foreach ($values as $value) {

@@ -8,12 +8,13 @@ use Alura\Mvc\Helper\HtmlRendererTrait;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
-class LoginFormController implements Controller
+class LoginFormController implements RequestHandlerInterface
 {
     use HtmlRendererTrait;
 
-    public function processaRequisicao(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         // Para não exibir a página de login novamente quando o usuário já estive logado
 

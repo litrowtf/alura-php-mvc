@@ -9,8 +9,9 @@ use Alura\Mvc\Repository\VideoRepository;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
-class VideoCreateController implements Controller
+class VideoCreateController implements RequestHandlerInterface
 {
     use FlashMassageTrait;
     public function __construct(private VideoRepository $videoRepository)
@@ -19,7 +20,7 @@ class VideoCreateController implements Controller
     }
 
     //Lidar com as requisições (GET, POST, etc)
-    public function processaRequisicao(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
 
         $url = filter_input(INPUT_POST, 'url', FILTER_VALIDATE_URL);

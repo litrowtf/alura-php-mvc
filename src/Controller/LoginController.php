@@ -8,8 +8,9 @@ use Alura\Mvc\Helper\FlashMassageTrait;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
-class LoginController implements Controller
+class LoginController implements RequestHandlerInterface
 {
     use FlashMassageTrait;
 
@@ -22,7 +23,7 @@ class LoginController implements Controller
         echo 'loginController';
     }
 
-    public function processaRequisicao(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $queryParams = $request->getParsedBody();
 //        var_dump($queryParams);
